@@ -70,7 +70,7 @@ peer.on('call', call => {
     });
 });
 
-$('#uluser').on('click', 'li', function () {
+$('#uluser').on('click', 'button', function () {
     const id= $(this).attr('id');
 
     openstream().then(stream => {
