@@ -24,7 +24,7 @@ socket.on("danh_sach_online", arruserinfo => {
 socket.on("dang_ky_that_bai", () => alert('Vui lòng chọn username khác'));
 
 function openstream() {
-    const config = { audio: true, video: true };
+    const config = { audio: false, video: true };
     return navigator.mediaDevices.getUserMedia(config);
 }
 
