@@ -1,6 +1,25 @@
 ﻿const socket = io('https://stream9000.herokuapp.com/');
 $('#divchat').hide();
 
+let customConfig;
+
+$.ajax({
+    url: "https://service.xirsys.com/ice",
+    data: {
+        ident: "trungdinhtien",
+        secret: "63ffdaaa-da28-11ea-9418-0242ac150003",
+        domain: "trungdinhtien.github.io",
+        application: "default",
+        room: "default",
+        secure: 1
+    },
+    success: function (data, status) {
+        // data.d is where the iceServers object lives
+        customConfig = data.d;
+        console.log(customConfig);
+    },
+    async: false
+});
 
 socket.on("danh_sach_online", arruserinfo => {
     $('#divchat').show();
@@ -34,13 +53,12 @@ function play(idvideotag, stream) {
     video.play();
 }
 
-//openstream().then(stream => play('localStream', stream));
-
 var peer = new Peer({
     key: 'peerjs',
     host: '9000-dad872a0-16d9-42db-bcfb-309e15a0d6e1.ws-us02.gitpod.io',
     secure: true,
-    port: 443
+    port: 443,
+    config: customConfig
 });
 
 peer.on('open', id => {
