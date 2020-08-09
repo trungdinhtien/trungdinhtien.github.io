@@ -8,12 +8,12 @@ socket.on("danh_sach_online", arruserinfo => {
 
     arruserinfo.forEach(user => {
         const { ten, peerid } = user;
-        $('#uluser').append('<li id="' + peerid + '">' + ten + '</li>');
+        $('#uluser').append('<button id="' + peerid + '">Call : ' + ten + '</button></br>');
     });
 
     socket.on("co_nguoi_dung_moi", user => {
         const { ten, peerid } = user;
-        $('#uluser').append('<li id="' + peerid + '">' + ten + '</li>');
+        $('#uluser').append('<button id="' + peerid + '">Call : ' + ten + '</button></br>');
     });
 
     socket.on('userngatketnoi', peerid => {
